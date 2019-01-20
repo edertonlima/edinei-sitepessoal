@@ -68,37 +68,26 @@ label:hover:before {
 }
 
 input[type='submit'], .button {
-	display: inline-block;
-	background-color: $azul;
 	color: #ffffff;
-	font-weight: $regular;
-	font-size: .875rem;
-	padding: 0px 50px;
-	height: 35px;
-	line-height: 37px;
-
+	white-space: nowrap;
+	border-radius: 30px;
+	border: 2px solid $cor1;
+	cursor: pointer;
+	text-align: left;
+	line-height: 17px;
+	margin: 0px;
+	padding: 12px 35px;
+	letter-spacing: 1px;
+	font-weight: $semibold;
+	font-size: 1.125em;
+	background-color: $cor1;
+	text-transform: uppercase;
 	@include animacao;
 
 	&:hover {
-		background-color: darken($azul, 10%);
-		color: #ffffff;
-	}
-
-	&.contato-home {
-		font-weight: $regular;
-		font-size: 1.225rem;
-		text-transform: none;
-		float: right;
-	}
-
-	&.enviar {
-		display: block;
-		width: 100%;
-		background-color: $verde;
-
-		&:hover {
-			background-color: darken($verde, 10%);
-		}
+		background-color: transparent;
+		text-decoration: none;
+		color: $cor1;
 	}
 }
 

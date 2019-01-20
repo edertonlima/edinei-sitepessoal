@@ -155,7 +155,7 @@
 
 	jQuery(window).scroll(function(){
 		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 300){
+		if(scroll_body > 200){
 			jQuery('.header').addClass('scroll_menu');
 		}else{
 			jQuery('.header').removeClass('scroll_menu');
@@ -178,6 +178,8 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 <script src="//load.sumome.com/" data-sumo-site-id="0820f5828ba5ae1d27edd8bde6d74989a0ddbfa73cad0af4f62420486d84f071" async="async"></script>
 */ ?>
 
+<?php wp_head(); ?>
+
 </head>
 <body <?php body_class(); ?>>
 
@@ -191,109 +193,13 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 
 			<nav class="nav">
 				<ul class="menu-principal">
-					<li class="<?php if(is_page('quem-somos')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('quem-somos')); ?>" title="<?php echo get_the_title(icl_object_id( get_page_by_path('quem-somos')->ID, 'post', false, false ));  ?>">
-							<?php echo get_the_title(icl_object_id( get_page_by_path('quem-somos')->ID, 'post', false, false ));  ?>
-						</a>
-					</li>
-
-					<li class="<?php if(is_page('servicos')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('servicos')); ?>" title="<?php echo get_the_title(icl_object_id( get_page_by_path('servicos')->ID, 'post', false, false ));  ?>">
-							<?php echo get_the_title(icl_object_id( get_page_by_path('servicos')->ID, 'post', false, false ));  ?>
-						</a>
-					</li>
-
-					<li class="<?php if(is_page('como-funciona')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('como-funciona')); ?>" title="<?php echo get_the_title(icl_object_id( get_page_by_path('como-funciona')->ID, 'post', false, false ));  ?>">
-							<?php echo get_the_title(icl_object_id( get_page_by_path('como-funciona')->ID, 'post', false, false ));  ?>
-						</a>
-					</li>
-
-					<li class="<?php if(is_page('clientes')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('clientes')); ?>" title="<?php echo get_the_title(icl_object_id( get_page_by_path('clientes')->ID, 'post', false, false ));  ?>">
-							<?php echo get_the_title(icl_object_id( get_page_by_path('clientes')->ID, 'post', false, false ));  ?>
-						</a>
-					</li>
-
-					<li class="<?php if(is_page('documentos')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('documentos')); ?>" title="<?php echo get_the_title(icl_object_id( get_page_by_path('documentos')->ID, 'post', false, false ));  ?>">
-							<?php echo get_the_title(icl_object_id( get_page_by_path('documentos')->ID, 'post', false, false ));  ?>
-						</a>
-					</li>
-
-					<li class="<?php if((is_category('noticias')) or (is_single())){ echo 'active'; } ?>">
-							<?php
-								$categories = get_terms( 'category', array(
-								    'orderby'    => 'count',
-								    'hide_empty' => 0,
-								    'slug' => 'noticias',
-								) );
-							?>
-						<a href="<?php echo get_home_url(); ?>/noticias" title="<?php echo $categories[0]->name; ?>">
-							<?php echo $categories[0]->name; ?>
-						</a>
-					</li>
-
-					<li>
-						<a href="#contato" title="<?php echo get_the_title(icl_object_id( get_page_by_path('contato')->ID, 'post', false, false ));  ?>">
-							<?php echo get_the_title(icl_object_id( get_page_by_path('contato')->ID, 'post', false, false ));  ?>
-						</a>
-					</li>
-
-					<li class="idioma submenu active">
-						<?php 
-							$langs = icl_get_languages('skip_missing=0&orderby=KEY&order=DIR&link_empty_to=str');
-
-							foreach ($langs as $key => $idioma) {
-								if($idioma['active']){ ?>
-
-										<a href="<?php echo $idioma['url']; ?>" title="<?php echo $idioma['native_name']; ?>">
-											<?php echo $idioma['native_name']; ?>
-										</a>
-
-								<?php }
-
-							}
-						?>
-
-						<ul>
-							
-							<?php 
-								foreach ($langs as $key => $idioma) {
-									//var_dump($idioma);
-
-									if(!$idioma['active']){ ?>
-
-										<li>
-											<a href="<?php echo $idioma['url']; ?>" title="<?php echo $idioma['native_name']; ?>">
-												<?php echo $idioma['native_name']; ?>
-											</a>
-										</li>
-
-									<?php }
-
-								}
-							?>
-
-						</ul>
-					</li>
-
-					<li class="area-restrita <?php if(isset($_SESSION['id'])){ echo 'submenu'; } ?>">
-						<a href="javascript:" title="Área Restrita" class="btn-login">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico_restrita.png">
-						</a>
-
-						<?php if(isset($_SESSION['id'])){ ?>
-							<ul>
-								<li>
-									<form action="<?php echo get_permalink(get_page_by_path('documentos')); ?>" method="post">
-										<input type="hidden" name="logout" value="true">
-										<button type="submit">SAIR</button>
-									</form>
-								</li>
-							</ul>
-						<?php } ?>
-					</li>
+					<li class="<?php if(is_front_page()){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('home')); ?>" title="home">home</a></li>
+					<li><a class="<?php if(is_page('home')){ echo 'active'; } ?>" href="javascript:" title="">sobre</a></li>
+					<li><a href="javascript:" title="">mentoria</a></li>
+					<li><a href="javascript:" title="">recomendações</a></li>
+					<li><a href="javascript:" title="">blog</a></li>
+					<li><a href="javascript:" title="">contato</a></li>
+					<li><a href="javascript:" title=""><i class="fas fa-search"></i> </a></li>
 				</ul>
 			</nav>
 		</div>

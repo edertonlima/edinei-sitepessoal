@@ -33,7 +33,13 @@ add_action( 'admin_menu' , 'remove_post_custom_fields' );
 function myprefix_unregister_tags() {
     unregister_taxonomy_for_object_type('post_tag', 'post');
 }
-add_action('init', 'myprefix_unregister_tags');
+add_action('init', 'myprefix_unregister_tags'); */
+
+
+function remove_admin_login_header() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+add_action('get_header', 'remove_admin_login_header');
 
 
 /* MENUS */

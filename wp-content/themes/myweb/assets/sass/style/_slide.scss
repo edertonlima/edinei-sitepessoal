@@ -40,33 +40,29 @@
 			p {
 				color: $verde;
 				display: block;
-				padding: 0 50px;
-				//text-shadow: 1px 1px 1px #000;
+				text-align: center;
+				padding: 40px 5%;
+				width: 80%;
+				margin: 0 auto;
+				color: #ffffff;
 
 				&.texto {
-					font-size: 1.365rem;
-					line-height: 1.75rem;
+					font-size: 5rem;
+					line-height: 6rem;
 					font-weight: $bold;
-
-					background-color: rgba(#fff,.8);
-					margin-right: 10%;
-					padding: 40px 5% 40px 40px;
-					float: right;
-					width: 80%;
-					max-width: 540px;
+					max-width: $width;
+					text-shadow: 1px 1px 1px #000;
 					@include box-sizing;
-
-					&.category-name {
-						font-weight: $light;
-						text-transform: uppercase;
-					}
 				}
 
 				&.sub-texto {
-					margin-top: 15px;
-					font-size: 1.3625rem;
-					line-height: 1.3625rem;
+					color: #ffffff;
+					font-size: .95rem;
+					line-height: 1.825rem;
 					font-weight: $light;
+					max-width: 780px;
+					padding-top: 0;
+					text-shadow: 1px 1px 1px #000;
 				}
 
 				@media all and (max-width: 750px){
