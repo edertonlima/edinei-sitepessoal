@@ -6,29 +6,32 @@ form {
 		max-width: 100%;
 		width: 100%;
 		background-color: #ffffff;
-		font-size: .8rem;
+		font-size: $font-size;
 		color: $cor-txt;
 		margin-bottom: 15px;
-		border: 1px solid $verde;
-		font-weight: $light;
+		border-bottom: 1px solid $cor-txt;
+		font-weight: $regular;
 
 		@include placeholder {
-			opacity: .8;
+			font-size: $font-size;
+			opacity: 1;
 			color: $cor-txt;
-			font-weight: $light;
+			font-weight: $regular;
 		}
 	}
 
 	input[type='text'], input[type='password'] {
-		line-height: 35px;
-		height: 35px;
-		padding: 0 10px;
+		line-height: 50px;
+		height: 50px;
+		padding: 5px 0;
 		@include box-sizing;
 	}
 
 	textarea {
-		padding: 10px;
-		height: 100px;
+		padding: 5px 0;
+		height: 50px;
+		min-height: 50px;
+		max-height: 100px;
 		resize: vertical;
 		@include box-sizing;
 	}
@@ -67,6 +70,29 @@ label:hover:before {
   border: 1px solid #4778d9!important;
 }
 
+input[type='radio'], input[type='checkbox'] {
+	display: inline-block;
+	width: auto;
+	position: relative;
+	top: 1px;
+}
+
+label.radio, label.checkbox {
+	padding-left: 20px;
+	padding-bottom: 20px;
+	cursor: pointer;
+
+	&.erro {
+		color: red;
+	}
+
+	input[type='radio'], input[type='checkbox'] {
+		left: 0px;
+		top: 3px;
+		margin: 0;
+	}
+}
+
 input[type='submit'], .button {
 	color: #ffffff;
 	white-space: nowrap;
@@ -93,6 +119,10 @@ input[type='submit'], .button {
 	&.mini {
 		padding: 10px 20px;
 		font-size: .75rem;
+	}
+
+	&.enviar {
+		//margin-top: 20px;
 	}
 }
 
@@ -168,8 +198,18 @@ input::-webkit-input-placeholder {
 	font-size: 0.85rem;
 	line-height: 1.225rem;
 	margin: 0;
+	display: inline-block;
+	padding-left: 10px;
 
 	&.erro, &.ok {
 		margin-bottom: 15px;
+	}
+
+	&.ok {
+		color: $cor1;
+	}
+
+	&.erro {
+		color: red;;
 	}
 }

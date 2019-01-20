@@ -139,3 +139,42 @@
 		}
 	}
 }
+
+
+/* depoimentos */
+.box-depoimentos {
+	@extend .box-destaque; 
+
+	.texto {
+		.reumo-footer {
+			.depoimentos {
+				margin: 30px auto;
+				max-width: 780px;
+			}
+		}
+	}
+
+	.avatar {
+		border-radius: 50%;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 15px;
+	}
+
+	span {
+		text-align: center;
+		display: block;
+		font-weight: $bold;
+		font-size: .65rem;
+		padding: 2px 0;
+
+		&.nome {
+			text-transform: uppercase;
+			color: #ffffff;
+		}
+
+		&.funcao {
+
+		}
+	}
+}
