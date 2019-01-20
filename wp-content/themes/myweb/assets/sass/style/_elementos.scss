@@ -2,6 +2,10 @@ strong {
 	font-weight: $bold;
 }
 
+h1, h2, h3, h4, h6 {
+	color: #000000;
+}
+
 h1 {
 	margin-top: 0px;
 	//max-width: $wLogo;
@@ -24,10 +28,11 @@ h1 {
 }
 
 h2 {
-	font-size: 3rem;
-	color: $cor-txt;
+	font-size: 3.215rem;
 	font-weight: $bold;
 	display: block;
+	padding: 10px 0;
+	text-align: center;
 }
 
 h3 {
@@ -39,16 +44,27 @@ h3 {
 }
 
 h4 {
-	font-weight: $bold;
-	font-size: 1.125rem;
-	line-height: 1.125rem;
-	padding: 20px 0;
-	text-transform: uppercase;
 	display: block;
+	font-weight: $bold;
+	font-size: 1.5rem;
+	line-height: 1.125rem;
+
+	i {
+		color: $cor1;
+		font-size: 3rem;
+		vertical-align: middle;
+		padding-right: 10px;
+	}
 }
 
 h5 {
-
+	font-weight: $bold;
+	font-size: 1rem;
+	line-height: 1.125rem;
+	text-transform: uppercase;
+	display: block;
+	color: $cor1;
+	text-align: center;
 }
 
 h6 {
@@ -57,35 +73,16 @@ h6 {
 
 p {
 	font-size: $font-size;
-	line-height: $font-size+.3;
+	line-height: $font-size+.6;
 	font-weight: $regular;
 	margin-bottom: 20px;
 
-	&.mini {
-		font-size: 1rem;
-		line-height: 1.25rem;
-	}
-
-	&.destaque {
-		font-size: 1.5rem;
-		line-height: 1.8rem;
-		font-weight: $light;
-	}
-
-	&.destaque-mini {
-		font-size: .875rem;
-		line-height: 1rem;
-		max-width: 510px;
-		margin: 0 auto;
-	}
-
-	&.cinza {
-		color: darken($cinza-escuro, 10%);
-	}
-	
-	@media all and (max-width: 770px){
-		font-size: 1.25rem;
-		line-height: (1.25rem)+.5;
+	&.sub-h2 {
+		text-align: center;
+		margin: 40px auto 0;
+		margin-bottom: 0px;
+		max-width: 780px;
+		width: 80%;
 	}
 
 	&:last-child {

@@ -89,6 +89,11 @@ input[type='submit'], .button {
 		text-decoration: none;
 		color: $cor1;
 	}
+
+	&.mini {
+		padding: 10px 12.5px;
+		font-size: .75rem;
+	}
 }
 
 .select {

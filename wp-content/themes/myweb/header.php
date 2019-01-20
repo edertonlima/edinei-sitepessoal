@@ -194,12 +194,12 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 			<nav class="nav">
 				<ul class="menu-principal">
 					<li class="<?php if(is_front_page()){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('home')); ?>" title="home">home</a></li>
-					<li><a class="<?php if(is_page('home')){ echo 'active'; } ?>" href="javascript:" title="">sobre</a></li>
+					<li><a class="<?php if(is_page('sobre')){ echo 'active'; } ?>" href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="">sobre</a></li>
 					<li><a href="javascript:" title="">mentoria</a></li>
 					<li><a href="javascript:" title="">recomendações</a></li>
 					<li><a href="javascript:" title="">blog</a></li>
 					<li><a href="javascript:" title="">contato</a></li>
-					<li><a href="javascript:" title=""><i class="fas fa-search"></i> </a></li>
+					<li><a href="javascript:" title=""><i class="fas fa-search"></i></a></li>
 				</ul>
 			</nav>
 		</div>

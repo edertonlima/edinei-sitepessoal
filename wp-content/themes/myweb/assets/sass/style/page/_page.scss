@@ -1,132 +1,50 @@
-.como-funciona {
-	.item-como-funciona {
-		margin-top: 60px;
-
-		&:first-child {
-			margin-top: 0px;
-		}
+.box-resumo-page {
+	.imagem, .texto {
+		height: 70vh;
 	}
 
-	.img-item {
-		float: left;
-		width: 115px;
+	.imagem {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 	}
 
-	.content-text {
-		display: block;
-		padding: 0 0 0 165px;
-		clear: none;
-
-		h4 {
-			text-transform: none;
-		}
-	}
-}
-
-.clientes {
-	text-align: center;
-
-	li {
-		margin: 5px 0;
-	}
-
-	a {
-		&:hover {
-			h4 {
-				color: $verde-claro;
-			}
-		}
-	}
-
-	h4 {
-		display: inline-block;
-		padding: 5px 0;
-		text-align: center;
-		font-size: 1.225rem;
-		@include animacao;
-	}
-}
-
-.documentos {
-	.msg-documentos {
-		form {
-			width: auto;
-			height: auto;
-			clear: none;
-			margin-bottom: 15px;
-
-			&:before, &:after {
-				display: none;
-			}
-		}
-
-		button, a {
-			display: inline;
-			padding: 0;
-			height: auto;
-			line-height: normal;
-			color: $verde;
-			text-decoration: underline;
-			@include animacao;
-
-			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
-
-	.item-documentos {
-		position: relative;
-		margin-top: 40px;
-		padding-bottom: 40px;
-		border-bottom: 1px solid $verde-claro;
-		min-height: 150px;
-
-		&:first-child {
-			margin-top: 0px;
-		}
-
-		&:last-child {
-			border: none;
-			padding-bottom: 0;
-		}
-	}
-
-	.img-item {
-		position: absolute;
-		right: 0;
-		top: 17px;
-	}
-
-	.content-text {
-		display: block;
-		padding: 0 165px 0 0;
-		clear: none;
-
-		h4 {
-			text-transform: none;
-		}
-	}
-
-	a {
-		&:hover {
-			opacity: .8;
-		}
-	}
-
-	&.documentos-restrito {
-		margin-bottom: 70px;
-	}
-}
-
-.vertical-align {
-	.col-5 {
+	.texto {
+		padding: 40px 0 40px 40px!important;
 		display: table;
-		height: 3500px;
+		background-color: #f1f4f6;
 
-		p {
+		.middle {
 			display: table-cell;
-			vertical-align: middle;
+			vertical-align: bottom;
+		}
+
+		h2, h5 {
+
+		}
+
+		h2, h5, p .button {
+			text-align: left;
+		}
+
+		.reumo-footer {
+			float: left;
+			display: table;
+			width: 100%;
+			padding: 2rem 15px 0;
+
+			p {
+				width: 50%;
+				border-top: 1px solid #e4e7e8;
+				padding: 2rem 0;
+				display: table-cell;
+				vertical-align: middle;
+				@include box-sizing;
+
+				a {
+					margin-left: 30px;
+				}
+			}
 		}
 	}
 }
