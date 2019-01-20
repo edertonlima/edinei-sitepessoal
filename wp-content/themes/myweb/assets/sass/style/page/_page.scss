@@ -50,6 +50,37 @@
 }
 
 
+
+.box-mini-resumo-page {
+	@extend .box-resumo-page;
+
+	.texto {
+		padding: 0!important;
+		height: auto;
+		background-color: transparent;
+
+		h2 {
+			font-size: 3rem;
+		}
+
+		p {
+			width: 35%; 
+
+			&:first-child {
+				width: 65%;
+				font-size: $font-size - .2;
+				line-height: $font-size+.4;
+			}
+		}
+
+		.reumo-footer {
+			padding-top: 0;
+		}
+	}
+}
+
+
+
 .box-destaque {
 	.imagem, .texto {
 		//eight: 70vh;
