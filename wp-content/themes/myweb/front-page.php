@@ -145,6 +145,34 @@
 	</div>
 </section>
 
+<section class="box-content no-padding box-destaque">
+	
+
+	<div class="row">
+		
+		<div class="col-12 imagem" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/home-destaque.jpg');">
+			<div class="container">
+				<div class="texto">
+
+					<div class="middle">
+						<h2 class="col-12">Seja Visto!<br>PRoduza conteúdo relevante</h2>
+
+						<div class="reumo-footer">
+							<p class="">Our CoWorking Space provides amazing office.</p>
+							<p class=""><a class="button" href="#<?php //echo get_permalink(get_page_by_path('sobre')); ?>" title="CONHEÇA-NOS">quero contratar</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+</section>
+
 
 <?php //get_template_part( 'content-quem-somos' ); ?>
 

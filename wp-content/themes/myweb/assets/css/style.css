@@ -4440,7 +4440,6 @@ input::-webkit-input-placeholder {
           line-height: 6rem;
           font-weight: 700;
           max-width: 1180px;
-          text-shadow: 1px 1px 1px #000;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
           box-sizing: border-box; }
@@ -4448,10 +4447,9 @@ input::-webkit-input-placeholder {
           color: #ffffff;
           font-size: .95rem;
           line-height: 1.825rem;
-          font-weight: 300;
+          font-weight: 500;
           max-width: 780px;
-          padding-top: 0;
-          text-shadow: 1px 1px 1px #000; }
+          padding-top: 0; }
         @media all and (max-width: 750px) {
           .slide .item .box-texto p.texto {
             font-size: 1.5625rem;
@@ -4601,6 +4599,42 @@ input::-webkit-input-placeholder {
       box-sizing: border-box; }
       .box-resumo-page .texto .reumo-footer p a {
         margin-left: 30px; }
+
+.box-destaque .imagem {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+.box-destaque .texto {
+  margin: 8rem 0;
+  display: table; }
+  .box-destaque .texto .middle {
+    display: table-cell;
+    vertical-align: bottom; }
+  .box-destaque .texto h2 {
+    color: #ffffff; }
+  .box-destaque .texto h2, .box-destaque .texto h5, .box-destaque .texto p .button {
+    text-align: center; }
+  .box-destaque .texto .reumo-footer {
+    float: left;
+    width: 100%;
+    padding: 2rem 15px 0; }
+    .box-destaque .texto .reumo-footer:before {
+      content: '';
+      display: block;
+      background-color: #ffffff;
+      width: 80px;
+      height: 2px;
+      margin: 0 auto; }
+    .box-destaque .texto .reumo-footer p {
+      color: #ffffff;
+      text-align: center;
+      display: block;
+      width: 100%;
+      padding: 2rem 0;
+      margin-bottom: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
 
 .como-funciona-home p {
   margin-bottom: 5px; }

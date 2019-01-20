@@ -48,3 +48,63 @@
 		}
 	}
 }
+
+
+.box-destaque {
+	.imagem, .texto {
+		//eight: 70vh;
+	}
+
+	.imagem {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.texto {
+		margin: 8rem 0;
+		display: table;
+
+		.middle {
+			display: table-cell;
+			vertical-align: bottom;
+		}
+
+		h2 {
+			color: #ffffff;
+		}
+
+		h2, h5, p .button {
+			text-align: center;
+		}
+
+		.reumo-footer {
+			float: left;
+			width: 100%;
+			padding: 2rem 15px 0;
+
+			&:before {
+				content: '';
+				display: block;;
+				background-color: #ffffff;
+				width: 80px;
+				height: 2px;
+				margin: 0 auto;
+			}
+
+			p {
+				color: #ffffff;
+				text-align: center;
+				display: block;
+				width: 100%;
+				padding: 2rem 0;
+				margin-bottom: 0;
+				@include box-sizing;
+
+				a {
+					
+				}
+			}
+		}
+	}
+}
