@@ -9,6 +9,10 @@ body {
 	min-height: 100vh;
 	//min-width: $width;
 	@include box-sizing;
+
+	&:not(.home){
+		padding-top: 120px;
+	}
 }
 
 body * {

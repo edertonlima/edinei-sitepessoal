@@ -129,15 +129,15 @@
 
 		<div class="row">
 			
-			<div class="col-6 imagem" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/quem-somos.jpg');"></div>
+			<div class="col-6 imagem" style="background-image: url('<?php the_field('titulo',get_page_by_path('sobre')); ?>');"></div>
 			<div class="col-6 texto">
 
 				<div class="middle">
-					<h5 class="col-12">sobre nós</h5>
-					<h2 class="col-12">Lorem ipsum dolor sit amet consectetur</h2>
+					<h5 class="col-12"><?php echo get_the_title(get_page_by_path('sobre')); ?></h5>
+					<h2 class="col-12"><?php the_field('titulo',get_page_by_path('sobre')); ?></h2>
 
 					<div class="reumo-footer">
-						<p class="">Our CoWorking Space provides amazing office space to all out of the box thinkers.</p>
+						<p class=""><?php the_field('descricao',get_page_by_path('sobre')); ?></p>
 						<p class=""><a class="button mini" href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="CONHEÇA-NOS">CONHEÇA-NOS</a></p>
 					</div>
 				</div>
@@ -193,8 +193,8 @@
 
 					<div class="col-7">
 						<div class="reumo-footer">
-							<p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod magna aliqua. Ut enim ad minim veniam, quis notrud exercitation ullamco aliquip ex ea comodo consequat. Duis aute irure dolor in reprehenderit.</p>
-							<p class=""><a class="button mini" href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="CONHEÇA-NOS">ver mais</a></p>
+							<p class="">Atualize-se através de nossos artigos. Conteúdo diversos sobre comportamentos, educação, empreendedorismo... Confira!</p>
+							<p class=""><a class="button mini" href="<?php echo get_category_link(get_cat_ID('blog')); ?>" title="VER MAIS">ver mais</a></p>
 						</div>
 					</div>
 
@@ -207,231 +207,60 @@
 	</div>
 </section>
 
-<!-- resumo page -->
-<section class="box-content no-padding blog box-resumo-page">
-	
-	<div class="row">
-		
-		<div class="col-6 imagem" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/quem-somos.jpg');"></div>
-		<div class="col-4  texto">
 
-			<div class="middle">
-				<h5 class="col-12">destaque</h5>
-				<h2 class="col-12">Lorem ipsum dolor sit amet consectetur</h2>
+	<?php
+	    $getPosts = array(
+	        'posts_per_page' => 99,
+	        'post_type'   => 'post',
+	        'post_status' => 'any'/*,
+			'tax_query' => array(
+			    array(
+			        'taxonomy' => 'categoria_produto',
+			        'terms' => $category->term_id,
+			        'include_children' => false,
+			        'operator' => 'IN'
+			    )
+			),*/
+	    );
+	    $posts = new WP_Query( $getPosts );
+        if(count($posts->posts) > 0){
 
-				<div class="reumo-footer">
-					<p class="">Our CoWorking Space provides amazing office space to all out of the box thinkers.</p>
-					<p class=""><a class="button mini" href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="leia mais">leia mais</a></p>
-				</div>
-			</div>
+        	$qtd_post = count($posts->posts);
+        	$count_post = 0;
+			while($posts->have_posts()) : $posts->the_post();
+				$count_post = $count_post+1;
 
-		</div>
+				if($count_post == 1){
+					get_template_part( 'content-blog-destaque' );
+				}else{ ?>
 
-	</div>
+					<?php if($count_post == 2){ ?>
+						<section class="box-content blog">
+							<div class="container">
 
-</section>
+								<div class="row">
+									
+									<ul class="blog-list">
+					<?php } ?>
 
-<section class="box-content blog">
-	<div class="container">
+										<?php get_template_part( 'content-blog' ); ?>
 
-		<div class="row">
-			
-			<ul class="blog-list">
-				<li class="col-4">
-					<a href="#">						
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="">						
-						<div class="cont">
-							<span class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis.</span>
-							<span class="data">05 de dezembro, 2018</span>
-						</div>
-					</a>
-				</li>
+					<?php if($qtd_post == $count_post){ ?>
+									</ul>
 
-				<li class="col-4">
-					<a href="#">						
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="">						
-						<div class="cont">
-							<span class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis.</span>
-							<span class="data">03 de dezembro, 2018</span>
-						</div>
-					</a>
-				</li>
+								</div>
 
-				<li class="col-4">
-					<a href="#">						
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="">						
-						<div class="cont">
-							<span class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis.</span>
-							<span class="data">28 de novembro, 2018</span>
-						</div>
-					</a>
-				</li>
-			</ul>
+							</div>
+						</section>
+					<?php } ?>
 
-		</div>
+				<?php }
 
-	</div>
-</section>
+			endwhile;
 
+		}
+	?>
 
-<!-- depoimentos -->
-<section class="box-content no-padding box-depoimentos">
-	<div class="row">
-		
-		<div class="col-12 imagem" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/home-destaque.jpg');">
-			<div class="container">
-				<div class="texto">
-
-					<div class="middle">
-						<h5 class="col-12">depoimentos</h5>
-						<h2 class="col-12">Nossos clientes estão dizendo</h2>
-
-						<div class="reumo-footer">
-							<p class="depoimentos">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu. Nullam mattis leo neque. Ut venenatis velit quis libero tincidunt, elementum pretium lacus efficitur. Sed fermentum libero vitae lacus tempus, sit amet ultricies nibh fringilla.</p>
-
-							<img class="avatar" src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar-depoimentos.jpg">
-							<span class="nome">Carlos Henrique</span>
-							<span class="funcao">Gerente de Produtos</span>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-
-	</div>
-</section>
-
-
-<!-- contato -->
-<section class="box-content box-contato">
-	<div class="container">
-		<div class="row">
-
-			<div class="col-6">
-				<h5 class="">Contato</h5>
-				<h2 class="">Fale Conosco</h2>
-
-				<p>
-					Blumenau, SC<br>
-					<span>+55 47 98856-5685</span><br>
-					<a href="mailto:contato@edtar.com.br">contato@edtar.com.br</a>				
-				</p>
-
-				<div class="redes">
-					<a href="#"><i class="fab fa-facebook-f"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#"><i class="fab fa-instagram"></i></a>
-					<a href="#"><i class="fab fa-linkedin-in"></i></a>
-
-				</div>
-			</div>
-
-			<div class="col-6">
-				<h5 class="">tem uma pergunta?</h5>
-				<h2 class="">Envie sua mensagem</h2>
-
-				<form class="form-contato">
-					<fieldset>
-						<input type="text" id="nome" name="nome" placeholder="Nome *">
-					</fieldset>
-
-					<fieldset>
-						<input type="text" id="email" name="email" placeholder="E-mail *">
-					</fieldset>
-
-					<fieldset>
-						<textarea id="mensagem" name="mensagem" placeholder="Mensagem"></textarea>
-					</fieldset>
-
-					<fieldset>
-						<label class="checkbox">
-							<input type="checkbox" id="confirmacao" value="true" name="confirmacao">
-							Concordo que meus dados enviados estão sendo coletados e armazenados.
-						</label>
-					</fieldset>
-
-					<a href="javascript:" class="button enviar">ENVIAR</a>
-					<p class="msg-form"></p>
-
-				</form>
-			</div>
-
-		</div>
-	</div>
-</section>
-
-
-<?php //get_template_part( 'content-quem-somos' ); ?>
-
-<script type="text/javascript">
-	jQuery(document).ready(function(){	  
-
-		// FORM
-		jQuery(".enviar").click(function(){
-			jQuery('.enviar').html('Enviando').prop( "disabled", true );
-			jQuery('.msg-form').removeClass('erro ok').html('');
-			var nome = jQuery('#nome').val();
-			var email = jQuery('#email').val();
-			var mensagem = jQuery('#mensagem').val();
-
-			var para = '<?php the_field('email', 'option'); ?>';
-			var nome_site = '<?php bloginfo('name'); ?>';
-
-			if(nome == ''){
-				jQuery('#nome').parent().addClass('erro');
-			}
-
-			if(email == ''){
-				jQuery('#email').parent().addClass('erro');
-			}
-
-			if(confirmacao == ''){
-				jQuery('#email').parent().addClass('erro');
-			}
-
-			if(jQuery("#confirmacao").is(':checked')){
-				var confirmacao = true;
-			}else{
-				var confirmacao = false;
-				jQuery('#confirmacao').parent().addClass('erro');
-			}
-
-			if((nome == '') || (email == '') || (confirmacao)){
-				jQuery('.msg-form').html('Campos obrigatórios não podem estar vazios.').addClass('erro');
-				jQuery('.enviar').html('Enviar').prop( "disabled", false );
-			}else{
-				jQuery.getJSON("<?php echo get_template_directory_uri(); ?>/mail.php", { nome:nome, email:email, mensagem:mensagem, para:para, nome_site:nome_site }, function(result){		
-					if(result=='ok'){
-						resultado = 'Enviado com sucesso! Obrigado.';
-						classe = 'ok';
-					}else{
-						resultado = result;
-						classe = 'erro';
-					}
-					jQuery('.msg-form').addClass(classe).html(resultado);
-					jQuery('.form-contato').trigger("reset");
-					jQuery('.enviar').html('Enviar').prop( "disabled", false );
-				});
-			}
-		});
-
-		jQuery('input').change(function(){
-			if(jQuery(this).parent().hasClass('erro')){
-				jQuery(this).parent().removeClass('erro');
-			}
-		});
-
-		jQuery('textarea').change(function(){
-			if(jQuery(this).parent().hasClass('erro')){
-				jQuery(this).parent().removeClass('erro');
-			}
-		});
-		
-	});
-
-</script>
+<?php get_template_part( 'content-depoimentos' ); ?>
 
 <?php get_footer(); ?>

@@ -135,7 +135,7 @@ input[type='submit'], .button {
 	margin-top: 10px;
 	display: block;
 	position: relative;
-	@include box-sizing();
+	@include box-sizing;
 
 	i {
 		position: absolute;

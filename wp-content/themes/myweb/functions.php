@@ -7,13 +7,7 @@
  */
 
 /* HABILITAR / DESABILITAR */ /*
-add_theme_support( 'post-thumbnails' );
 
-// Unable admin bar
-add_filter('show_admin_bar', '__return_false');
-
-add_post_type_support( 'post', 'excerpt' );
-add_post_type_support( 'page', 'excerpt' );
 
 // remove itens padrões
 add_action( 'init', 'my_custom_init' );
@@ -36,10 +30,20 @@ function myprefix_unregister_tags() {
 add_action('init', 'myprefix_unregister_tags'); */
 
 
+
+/*add_post_type_support( 'post', 'excerpt' );
+add_post_type_support( 'page', 'excerpt' );*/
+
+add_theme_support( 'post-thumbnails' );
+
+
 function remove_admin_login_header() {
     remove_action('wp_head', '_admin_bar_bump_cb');
 }
 add_action('get_header', 'remove_admin_login_header');
+
+// Unable admin bar
+add_filter('show_admin_bar', '__return_false');
 
 
 /* MENUS */
@@ -182,6 +186,34 @@ function paginacao() {
 	/* POST TYPE */ 
 
 
+
+
+
+	add_action('admin_head', 'custom_css_admin');
+	function custom_css_admin() {
+		echo '<style>
+			.editor-styles-wrapper p {
+				text-align: justify;
+				white-space: normal;
+			}
+		</style>';
+
+		echo '
+			<script type="text/javascript">
+				jQuery.noConflict();
+
+				jQuery("document").ready(function(){
+
+				});
+			</script>
+		';
+	}
+
+
+
+
+
+
 	if(wp_get_current_user()->ID == 1){
 		$producao = false;
 	}else{
@@ -211,6 +243,10 @@ function paginacao() {
 
 			#categories, .column-categories {
 				text-indent: -10000px;
+			}
+
+			.wp-block-paragraph editor-rich-text__tinymce mce-content-body {
+				text-align: justify;
 			}
 		  </style>';
 

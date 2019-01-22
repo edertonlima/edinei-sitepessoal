@@ -1,7 +1,36 @@
 <?php get_header(); ?>
 
-<?php $term = get_queried_object(); ?>
+	<?php 
+		global $term;
+		$term = get_queried_object(); //echo $term->cat_name; //var_dump($term);
+	?>
 
+	<?php while ( have_posts() ) : the_post(); ?>
+
+		<?php get_template_part( 'content-header' ); ?>
+
+		<?php if(get_the_content()){ ?>
+			<section class="box-content cinza">
+				<div class="container">
+					
+					<div class="row">
+						<div class="col-10 mlleft mlright content">
+							<?php the_content(); ?>
+						</div>
+					</div>
+
+				</div>
+			</section>
+		<?php } ?>
+
+	<?php endwhile; ?>
+
+	<?php paginacao(); ?>
+
+<?php get_footer(); ?>
+
+
+<?php /*
 	<!-- slide -->
 	<section class="box-content no-padding">
 		<div class="slide">
@@ -88,7 +117,7 @@
 							 * Include the Post-Format-specific template for the content.
 							 * If you want to override this in a child theme, then include a file
 							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-							 */
+							 */ /*
 							get_template_part( 'content-noticia', get_post_format() );
 
 						// End the loop.
@@ -152,4 +181,3 @@
 
 */ ?>
 
-<?php get_footer(); ?>

@@ -4,7 +4,9 @@
 	width: 100%;
 	z-index: 999;
 	padding: 40px 0;
-	@include animacao();
+	float: left;
+	background-color: #262626;
+	@include animacao;
 
 	h1 {
 		display: inline-block;
@@ -19,6 +21,14 @@
 			img {
 				max-height: 70px;
 			}
+		}
+	}
+}
+
+.home {
+	.header {
+		&:not(.scroll_menu) {
+			background-color: transparent;
 		}
 	}
 }

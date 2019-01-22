@@ -130,14 +130,17 @@
 			}
 		});
 
+		// FOOTER POSITION BOTTOM
 		if(jQuery('body').height() <= jQuery(window).height()){
 			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
+			jQuery('body').css({overflow: 'hidden'});
 		}else{
 			jQuery('.footer').css({position: 'relative'});
+			jQuery('body').css({overflow: 'visible'});
 		}
 
 		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 300){
+		if(scroll_body > 50){
 			jQuery('.header').addClass('scroll_menu');
 		}
 	});	
@@ -146,16 +149,21 @@
 		jQuery('.menu-mobile').removeClass('active');
 		jQuery('.header').removeClass('active');
 		//jQuery('.nav').css('top','-100vh');
+		
+		// FOOTER POSITION BOTTOM
 		if(jQuery('body').height() <= jQuery(window).height()){
 			jQuery('.footer').css({position: 'absolute', bottom: '0px'});
+			jQuery('body').css({overflow: 'hidden'});
 		}else{
 			jQuery('.footer').css({position: 'relative'});
+			jQuery('body').css({overflow: 'visible'});
 		}
+
 	});
 
 	jQuery(window).scroll(function(){
 		scroll_body = jQuery(window).scrollTop();
-		if(scroll_body > 200){
+		if(scroll_body > 50){
 			jQuery('.header').addClass('scroll_menu');
 		}else{
 			jQuery('.header').removeClass('scroll_menu');
@@ -194,11 +202,11 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 			<nav class="nav">
 				<ul class="menu-principal">
 					<li class="<?php if(is_front_page()){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('home')); ?>" title="home">home</a></li>
-					<li><a class="<?php if(is_page('sobre')){ echo 'active'; } ?>" href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="">sobre</a></li>
-					<li><a href="javascript:" title="">mentoria</a></li>
-					<li><a href="javascript:" title="">recomendações</a></li>
-					<li><a href="javascript:" title="">blog</a></li>
-					<li><a href="javascript:" title="">contato</a></li>
+					<li class="<?php if(is_page('sobre')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="">sobre</a></li>
+					<li class="<?php if(is_page('metodologia')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('metodologia')); ?>" title="">metodologia</a></li>
+					<li class="<?php if(is_page('recomendacoes')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('recomendacoes')); ?>" title="">recomendações</a></li>
+					<li class="<?php if((is_category('blog')) or (is_single())){ echo 'active'; } ?>"><a href="<?php echo get_category_link(get_cat_ID('blog')); ?>" title="">blog</a></li>
+					<li class="<?php if(is_page('contato')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="">contato</a></li>
 					<li><a href="javascript:" title=""><i class="fas fa-search"></i></a></li>
 				</ul>
 			</nav>
