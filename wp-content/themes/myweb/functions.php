@@ -34,6 +34,12 @@ add_action('init', 'myprefix_unregister_tags'); */
 /*add_post_type_support( 'post', 'excerpt' );
 add_post_type_support( 'page', 'excerpt' );*/
 
+function tn_custom_excerpt_length( $length ) {
+return 25;
+}
+add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );
+
+
 add_theme_support( 'post-thumbnails' );
 
 
@@ -119,6 +125,18 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Geral',
 		'parent_slug'	=> 'configuracoes-geral',
 	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Blog',
+		'menu_title'	=> 'Blog',
+		'parent_slug'	=> 'configuracoes-geral',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Depoimentos',
+		'menu_title'	=> 'Depoimentos',
+		'parent_slug'	=> 'configuracoes-geral',
+	));
 }
 
 /* PAGINAÇÃO */ /*
@@ -148,12 +166,12 @@ function paginacao() {
 
 // NOVOS POST TYPES 
 
-	/* POST TYPE */ /*
-	function user_post_type(){
-		register_post_type('area-restrita', array( 
+	/* POST TYPE */
+	function depoimentos_post_type(){
+		register_post_type('depoimentos', array( 
 			'labels'            =>  array(
-				'name'          =>      __('Área Restrita'),
-				'singular_name' =>      __('Área Restrita'),
+				'name'          =>      __('Depoimentos'),
+				'singular_name' =>      __('Depoimento'),
 				'all_items'     =>      __('Todos'),
 				'add_new'       =>      __('Adicionar'),
 				'add_new_item'  =>      __('Adicionar'),
@@ -171,18 +189,18 @@ function paginacao() {
 			'capability_type'   =>  'post',
 			'hierarchical'      =>  true,
 			'rewrite'=> [
-				'slug' => 'area-restrita',
+				'slug' => 'depoimentos',
 				"with_front" => false
 			],
-			"cptp_permalink_structure" => "/%area-restrita%/%postname%/",
+			"cptp_permalink_structure" => "/%depoimentos%/%postname%/",
 			'menu_position'     =>  21,
-			'supports'          =>  array('title'),
+			'supports'          =>  array('title','editor','excerpt','thumbnail'),
 			'has_archive'       =>  false,
 			'menu_icon' => 'dashicons-lock'
 		));
 		flush_rewrite_rules();
 	}
-	add_action('init', 'user_post_type');
+	add_action('init', 'depoimentos_post_type');
 	/* POST TYPE */ 
 
 

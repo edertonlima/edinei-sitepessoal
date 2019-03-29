@@ -27,7 +27,7 @@
 			text-align: left;
 		}
 
-		.reumo-footer {
+		.resumo-footer {
 			float: left;
 			display: table;
 			width: 100%;
@@ -74,13 +74,24 @@
 
 			&.full {
 				width: 100%;
+				margin-top: 30px;
+				display: block;
+				padding: 20px 0 0 0;
 			}
 		}
 
-		.reumo-footer {
+		.resumo-footer {
 			padding-top: 0;
 		}
 	}
+}
+
+.bg-image-page-header {
+	height: 50vh;
+	padding: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 
@@ -107,25 +118,33 @@
 
 		h2 {
 			color: #ffffff;
+			text-shadow: 1px 1px 1px darken(#000, 5%);
+
+			&:after {
+				content: '';
+				display: block;;
+				background-color: #ffffff;
+				width: 70px;
+				height: 2px;
+				top: 25px;
+				position: relative;
+				margin: 0 auto;
+			}
+		}
+
+		h5 {
+			text-shadow: 1px 1px 1px darken(#000, 5%);
 		}
 
 		h2, h5, p .button {
 			text-align: center;
 		}
 
-		.reumo-footer {
+		.resumo-footer {
 			float: left;
 			width: 100%;
 			padding: 2rem 15px 0;
-
-			&:before {
-				content: '';
-				display: block;;
-				background-color: #ffffff;
-				width: 80px;
-				height: 2px;
-				margin: 0 auto;
-			}
+			text-align: center;
 
 			p {
 				color: #ffffff;
@@ -133,12 +152,15 @@
 				display: block;
 				width: 100%;
 				padding: 2rem 0;
+				font-size: 1.25rem;
+				line-height: 1.75rem;
 				margin-bottom: 0;
+				text-shadow: 1px 1px 1px darken(#000, 5%);
 				@include box-sizing;
+			}
 
-				a {
-					
-				}
+			a {
+				display: inline-block;
 			}
 		}
 	}
@@ -150,7 +172,7 @@
 	@extend .box-destaque; 
 
 	.texto {
-		.reumo-footer {
+		.resumo-footer {
 			.depoimentos {
 				margin: 30px auto;
 				max-width: 780px;
@@ -171,6 +193,7 @@
 		font-weight: $bold;
 		font-size: .65rem;
 		padding: 2px 0;
+		text-shadow: 1px 1px 1px darken(#000, 5%);
 
 		&.nome {
 			text-transform: uppercase;

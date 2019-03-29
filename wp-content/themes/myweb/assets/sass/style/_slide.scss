@@ -1,4 +1,4 @@
-.slide {
+#slide {
 	height: $hSlide;
 	
 	.item {
@@ -7,6 +7,15 @@
 		background-position: center;
 		background-size: cover;
 		line-height: $hSlide;
+
+		&:before {
+			content: '';
+			background-image: linear-gradient(to right, rgba(#000,.5), rgba(#000,.25), rgba(#000,.5));
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 0;
+		}
 
 		&.video {
 			video {
@@ -20,6 +29,8 @@
 			width: 100%;
 			height: $hSlide;
 			line-height: $hSlide;
+			position: relative;
+			z-index: 1;
 			//background-color: rgba($verde, .8);
 		}
 
@@ -51,7 +62,7 @@
 					line-height: 6rem;
 					font-weight: $bold;
 					max-width: $width;
-					//text-shadow: 1px 1px 1px #000;
+					text-shadow: 1px 1px 1px darken(#000, 5%);
 					@include box-sizing;
 				}
 
@@ -62,6 +73,7 @@
 					font-weight: $regular;
 					max-width: 780px;
 					padding: 0 0 40px 0;
+					text-shadow: 1px 1px 1px darken(#000, 5%);
 					//text-shadow: 1px 1px 1px #000;
 				}
 
@@ -170,6 +182,50 @@
 			&:hover {
 				opacity: .75;
 			}
+		}
+	}
+}
+
+.depoimentos-slide {
+	padding: 0 40px;
+
+	.carousel-control-prev, .carousel-control-next {
+		width: 50px;
+		height: 50px;
+		display: block;
+		text-align: center;
+		line-height: 58px;
+		border-radius: 50%;
+		background-color: rgba(#ffffff, .3);
+		position: absolute;
+		top: 50%;
+		margin-top: -45px;
+		@include animacao;
+
+		i {
+			font-size: 1.5rem;
+			color: #262626;
+			@include animacao;
+		}
+
+		&:hover {
+			background-color: $cor1;
+
+			i {
+				color: #ffffff;
+			}
+		}
+	}
+
+	.carousel-control-prev {
+		left: -40px;
+	}
+	.carousel-control-next {
+		right: -40px;
+
+		i {
+			position: relative;
+			left: 2px;
 		}
 	}
 }

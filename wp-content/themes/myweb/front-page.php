@@ -83,40 +83,23 @@
 <section class="box-content">
 	<div class="container">
 		
-		<h5>somos o que você procura</h5>
-		<h2>Grandes Ideias Pequenos Custos</h2>
-		<p class="sub-h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu. Nullam mattis leo neque</p>
+		<h5><?php the_field('subtitulo_home_sobre',get_page_by_path('sobre')); ?></h5>
+		<h2><?php the_field('titulo_home_sobre',get_page_by_path('sobre')); ?></h2>
+		<p class="sub-h2"><?php the_field('descricao_home_sobre',get_page_by_path('sobre')); ?></p>
 
 		<ul class="item-ico row">
-			<li class="col-4">
-				<h4><i class="fas fa-comments"></i> Lorem ipsum dolor</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu.</p>
-			</li>
 
-			<li class="col-4">
-				<h4><i class="fas fa-wifi"></i> Lorem ipsum dolor</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu.</p>
-			</li>
+			<?php if( have_rows('blocos_home_sobre',get_page_by_path('sobre')) ):
+				while ( have_rows('blocos_home_sobre',get_page_by_path('sobre')) ) : the_row(); ?>
 
-			<li class="col-4">
-				<h4><i class="fas fa-search"></i> Lorem ipsum dolor</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu.</p>
-			</li>
+					<li class="col-4">
+						<h4><?php the_sub_field('icone_blocos_home_sobre'); ?> <?php the_sub_field('titulo_blocos_home_sobre'); ?></h4>
+						<p><?php the_sub_field('descricao_blocos_home_sobre'); ?></p>
+					</li>
 
-			<li class="col-4">
-				<h4><i class="fas fa-comments"></i> Lorem ipsum dolor</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu.</p>
-			</li>
+				<?php endwhile;
+			endif; ?>
 
-			<li class="col-4">
-				<h4><i class="fas fa-wifi"></i> Lorem ipsum dolor</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu.</p>
-			</li>
-
-			<li class="col-4">
-				<h4><i class="fas fa-search"></i> Lorem ipsum dolor</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis, sit amet maximus dolor ullamcorper eu.</p>
-			</li>	
 		</ul>
 
 	</div> 
@@ -129,14 +112,21 @@
 
 		<div class="row">
 			
-			<div class="col-6 imagem" style="background-image: url('<?php the_field('titulo',get_page_by_path('sobre')); ?>');"></div>
-			<div class="col-6 texto">
+			<?php
+				$imagem = wp_get_attachment_image_src( get_post_thumbnail_id(get_page_by_path('sobre')), 'large' ); 
+
+				if($imagem[0]){ ?>
+					<div class="col-6 imagem" style="background-image: url('<?php echo $imagem[0]; ?>');"></div>
+				<?php }
+			?>
+			
+			<div class="col-<?php if(!$imagem[0]){ echo '12'; }else{ echo '6'; } ?> texto">
 
 				<div class="middle">
 					<h5 class="col-12"><?php echo get_the_title(get_page_by_path('sobre')); ?></h5>
 					<h2 class="col-12"><?php the_field('titulo',get_page_by_path('sobre')); ?></h2>
 
-					<div class="reumo-footer">
+					<div class="resumo-footer">
 						<p class=""><?php the_field('descricao',get_page_by_path('sobre')); ?></p>
 						<p class=""><a class="button mini" href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="CONHEÇA-NOS">CONHEÇA-NOS</a></p>
 					</div>
@@ -151,29 +141,44 @@
 
 
 <!-- destaque -->
-<section class="box-content no-padding box-destaque">
-	<div class="row">
-		
-		<div class="col-12 imagem" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/home-destaque.jpg');">
-			<div class="container">
-				<div class="texto">
+<?php if(get_field('imagem_destaque')){ ?>
+	<section class="box-content no-padding box-destaque">
+		<div class="row">
+			
+			<div class="col-12 imagem" style="background-image: url('<?php the_field('imagem_destaque'); ?>');">
+				<div class="container">
+					<div class="texto">
 
-					<div class="middle">
-						<h2 class="col-12">Seja Visto!<br>PRoduza conteúdo relevante</h2>
+						<div class="middle">
+							<h2 class="col-12"><?php the_field('titulo_destaque'); ?></h2>
 
-						<div class="reumo-footer">
-							<p class="">Our CoWorking Space provides amazing office.</p>
-							<p class=""><a class="button" href="#<?php //echo get_permalink(get_page_by_path('sobre')); ?>" title="CONHEÇA-NOS">quero contratar</a></p>
+							<div class="resumo-footer">
+								<p class=""><?php the_field('subtitulo_destaque'); ?></p>
+
+								<?php if(get_field('link_destaque')){ 
+										if(get_field('texto_link_destaque')){
+											$txt_link =  get_field('texto_link_destaque');
+										}else{
+											$txt_link = 'SAIBA MAIS';
+										}
+									?>
+									
+										<a class="button" href="<?php the_field('link_destaque'); ?>" title="<?php echo $txt_link; ?>">
+											<?php echo $txt_link; ?>
+										</a>
+									
+								<?php } ?>
+							</div>
 						</div>
-					</div>
 
+					</div>
 				</div>
+
 			</div>
 
 		</div>
-
-	</div>
-</section>
+	</section>
+<?php } ?>
 
 <!-- BLOG -->
 <!-- mini resumo page -->
@@ -188,12 +193,12 @@
 
 					<div class="col-5">
 						<h5 class="col-12">blog</h5>
-						<h2 class="col-12">Entre, descubra e suba de nível</h2>
+						<h2 class="col-12"><?php the_field('titulo_blog','option') ?></h2>
 					</div>
 
 					<div class="col-7">
-						<div class="reumo-footer">
-							<p class="">Atualize-se através de nossos artigos. Conteúdo diversos sobre comportamentos, educação, empreendedorismo... Confira!</p>
+						<div class="resumo-footer">
+							<p class=""><?php the_field('texto_blog','option') ?></p>
 							<p class=""><a class="button mini" href="<?php echo get_category_link(get_cat_ID('blog')); ?>" title="VER MAIS">ver mais</a></p>
 						</div>
 					</div>
@@ -210,7 +215,7 @@
 
 	<?php
 	    $getPosts = array(
-	        'posts_per_page' => 99,
+	        'posts_per_page' => 4,
 	        'post_type'   => 'post',
 	        'post_status' => 'any'/*,
 			'tax_query' => array(

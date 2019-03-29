@@ -1,9 +1,17 @@
 <li class="col-4">
 	<a href="<?php the_permalink(); ?>">
-		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="">						
+
+		<?php
+			$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail' ); 
+
+			if($imagem[0]){ ?>
+				<img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>">
+			<?php }
+		?>
+
 		<div class="cont">
-			<span class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque pulvinar turpis.</span>
-			<span class="data">05 de dezembro, 2018</span>
+			<span class="title"><?php the_title(); ?></span>
+			<span class="data"><?php the_date(); ?></span>
 		</div>
 	</a>
 </li>
