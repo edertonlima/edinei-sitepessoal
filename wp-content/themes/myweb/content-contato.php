@@ -1,5 +1,5 @@
 <!-- contato -->
-<section class="box-content box-contato">
+<section class="box-content box-contato <?php if(is_page('blog')){ echo 'cinza'; } ?>">
 	<div class="container">
 		<div class="row">
 

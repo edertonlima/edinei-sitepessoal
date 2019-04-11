@@ -116,11 +116,11 @@
 				$imagem = wp_get_attachment_image_src( get_post_thumbnail_id(get_page_by_path('sobre')), 'large' ); 
 
 				if($imagem[0]){ ?>
-					<div class="col-6 imagem" style="background-image: url('<?php echo $imagem[0]; ?>');"></div>
+					<div class="col-6 imagem" style="background-image: url('<?php echo $imagem[0]; ?>');" id="img-box-sobre"></div>
 				<?php }
 			?>
 			
-			<div class="col-<?php if(!$imagem[0]){ echo '12'; }else{ echo '6'; } ?> texto">
+			<div class="col-<?php if(!$imagem[0]){ echo '12'; }else{ echo '6'; } ?> texto" id="txt-box-sobre">
 
 				<div class="middle">
 					<h5 class="col-12"><?php echo get_the_title(get_page_by_path('sobre')); ?></h5>
@@ -269,3 +269,11 @@
 <?php get_template_part( 'content-depoimentos' ); ?>
 
 <?php get_footer(); ?>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+
+		jQuery.noConflict();
+		jQuery('#img-box-sobre').height((jQuery('#txt-box-sobre').height())+80);
+	});
+</script>

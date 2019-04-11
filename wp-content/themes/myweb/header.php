@@ -205,7 +205,9 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 					<li class="<?php if(is_page('sobre')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="">sobre</a></li>
 					<li class="<?php if(is_page('metodologia')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('metodologia')); ?>" title="">metodologia</a></li>
 					<li class="<?php if(is_page('recomendacoes')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('recomendacoes')); ?>" title="">recomendações</a></li>
-					<li class="<?php if((is_category('blog')) or (is_single())){ echo 'active'; } ?>"><a href="<?php echo get_category_link(get_cat_ID('blog')); ?>" title="">blog</a></li>
+					<li class="<?php  if( (is_page('blog')) or (is_category('blog')) or (is_single())){ echo 'active'; } ?>">
+						<a href="<?php echo get_home_url(); ?>/blog" title="">blog</a>
+					</li>
 					<li class="<?php if(is_page('contato')){ echo 'active'; } ?>"><a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="">contato</a></li>
 					<li><a href="javascript:" title=""><i class="fas fa-search"></i></a></li>
 				</ul>

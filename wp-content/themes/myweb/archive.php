@@ -1,3 +1,4 @@
+<?php echo 'archive'; ?>
 <?php get_header(); ?>
 
 	<?php 

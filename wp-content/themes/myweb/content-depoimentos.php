@@ -32,7 +32,7 @@
 
 										<?php while($posts->have_posts()) : $posts->the_post(); 
 											$slide = $slide+1;
-											$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+											$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'depoimento' ); ?>
 
 											<div class="item resumo-footer <?php if($slide == 1){ echo 'active'; } ?>">
 												<div class="depoimentos">

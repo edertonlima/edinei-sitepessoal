@@ -85,7 +85,7 @@ h6 {
 
 }
 
-p {
+p, .p-texto {
 	font-size: $font-size;
 	line-height: $font-size+.6;
 	font-weight: $regular;
@@ -234,8 +234,8 @@ a {
 }
 
 .paginacao {
-margin: 50px auto 0;
-text-align: center;
+	margin: 0px auto 0;
+	text-align: center;
 
 	li {
 		display: inline-block;
@@ -248,25 +248,26 @@ text-align: center;
 			line-height: 40px;
 			height: 40px;
 			padding: 0 10px;
+			color: $cor1;
 		}
 
 		a {
-			color: $verde;
+			color: $cor1;
 			@include animacao;
 
 			.fa {
 				font-size: 1.225rem;
 				font-weight: $regular;
-				color: $verde;
+				color: $cor1;
 			}
 
 			&:hover {
-				background-color: rgba($verde, .5);
+				background-color: rgba($cor1, .5);
 			}
 		}
 
-		span {
-			background-color: $verde;
+		.current {
+			background-color: $cor1;
 			color: #ffffff;
 		}
 	}

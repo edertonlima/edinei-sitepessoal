@@ -176,6 +176,10 @@
 			.depoimentos {
 				margin: 30px auto;
 				max-width: 780px;
+
+				* {
+					@extend .p-texto; 
+				}
 			}
 		}
 	}
@@ -185,6 +189,7 @@
 		display: block;
 		margin: 0 auto;
 		margin-bottom: 15px;
+		max-width: 80px;
 	}
 
 	span {

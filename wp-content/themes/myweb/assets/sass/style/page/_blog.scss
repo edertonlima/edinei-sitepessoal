@@ -11,7 +11,7 @@
 
 			h2 {
 				font-size: 2.5rem;
-				max-height: 148px;
+				max-height: 146px;
 				overflow: hidden;
 			}
 
@@ -76,6 +76,12 @@
 						opacity: .8;
 					}
 				}
+			}
+		}
+
+		&.list-categoria {
+			li {
+				margin-bottom: 80px;
 			}
 		}
 	}

@@ -63,6 +63,88 @@ add_filter( 'body_class', function( $classes ) {
     return array_merge( $classes, array( 'page' ) );
 } );
 
+
+if ( function_exists( 'add_image_size' ) ) { 
+    add_image_size( 'depoimento', 80, 80, true ); //(cropped)
+}
+
+
+
+// muda nome post
+function change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Blog';
+    $submenu['edit.php'][5][0] = 'Todos os posts';
+    $submenu['edit.php'][10][0] = 'Adicionar post';
+    echo '';
+}
+function change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Blog';
+    $labels->singular_name = 'Blog';
+    $labels->add_new = 'Adicionar post';
+    $labels->add_new_item = 'Adicionar post';
+    $labels->edit_item = 'Editar post';
+    $labels->new_item = 'Post';
+    $labels->view_item = 'Ver post';
+    $labels->search_items = 'Buscar post';
+    $labels->not_found = 'Nenhum post encontrado';
+    $labels->not_found_in_trash = 'Nenhum post encontrado na lixeira';
+    $labels->all_items = 'Todos os posts';
+    $labels->menu_name = 'Blog';
+    $labels->name_admin_bar = 'Blog';
+}
+ 
+add_action( 'admin_menu', 'change_post_label' );
+add_action( 'init', 'change_post_object' );
+
+
+/*
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+
+	$labels = array(
+	    'name' => _x('Blog', 'post type general name'),
+	    'singular_name' => _x('Blog', 'post type singular name'),
+	    'add_new' => _x('Adicionar novo', 'post'),
+	    'add_new_item' => __('Addicionar novo post'),
+	    'edit_item' => __('Editar post'),
+	    'new_item' => __('Novo post'),
+	    'all_items' => __('Todos as post'),
+	    'view_item' => __('Visualizar post'),
+	    'search_items' => __('Procurar Blog'),
+	    'not_found' =>  __('Nenhum post encontrado.'),
+	    'not_found_in_trash' => __('Nenhum post encontrado na lixeira.'),
+	    'parent_item_colon' => '',
+	    'menu_name' => 'Blog'
+	);
+	$args = array(
+	    'public' => true,
+	    'publicly_queryable' => true,
+	    'show_ui' => true,
+	    'show_in_menu' => true,
+
+		'rewrite'=> [
+			'slug' => 'blog',
+			"with_front" => true,
+		],
+
+	    'capability_type' => 'post',
+	    'has_archive' => true,
+	    'hierarchical' => true,
+	    'menu_position' => null,
+	    'menu_icon' => 'dashicons-tag',
+	    'supports' => array('title','excerpt','editor','thumbnail')
+	  );
+
+    register_post_type( 'post', $args );
+}
+*/
+
+
+
 /* URL encurtada, LINK */ /*
 function gera_url_encurtada($url){
     $url = urlencode($url);
@@ -139,7 +221,8 @@ if( function_exists('acf_add_options_page') ) {
 	));
 }
 
-/* PAGINAÇÃO */ /*
+
+
 function paginacao() {
     global $wp_query;
     $big = 999999999; // need an unlikely integer

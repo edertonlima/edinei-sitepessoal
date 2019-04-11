@@ -1,5 +1,5 @@
 <!-- mini resumo page -->
-<section class="box-content <?php if(!get_the_content()){ echo 'no-padding-bottom'; } ?> box-mini-resumo-page">
+<section class="box-content <?php if(!is_page('blog')){ if(!get_the_content()){ echo 'no-padding-bottom'; }} ?> box-mini-resumo-page">
 	<div class="container">
 
 		<div class="row">
@@ -8,8 +8,8 @@
 
 				<div class="middle">
 
-					<div class="<?php if(get_field('descricao')){ echo 'col-7'; }else{ echo 'col-12'; } ?>">
-						<h5 class="">
+					<div class="<?php if(is_page('blog')){ echo 'col-5'; }else{ if(get_field('descricao')){ echo 'col-7'; }else{ echo 'col-12'; }} ?>">
+						<h5 class="col-12">
 							<a href="<?php echo get_permalink(get_page_by_path('home')); ?>" title="HOME">home</a>
 							<i class="fas fa-chevron-right"></i>
 
@@ -28,11 +28,11 @@
 							 } ?>
 							
 						</h5>
-						<h2 class=""><?php the_field('titulo'); ?></h2>
+						<h2 class="col-12"><?php the_field('titulo'); ?></h2>
 					</div>
 
 					<?php if(get_field('descricao')){ ?>
-						<div class="col-5">
+						<div class="<?php if(is_page('blog')){ echo 'col-7'; }else{ echo 'col-5'; } ?>">
 							<div class="resumo-footer">
 								<p class="full"><?php the_field('descricao'); ?></p>
 							</div>
