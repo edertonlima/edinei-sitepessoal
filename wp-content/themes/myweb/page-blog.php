@@ -4,35 +4,22 @@
 
 		<?php get_template_part( 'content-header' ); ?>
 
-		<?php if(get_the_content()){ ?>
-			<section class="box-content cinza">
-				<div class="container">
-					
-					<div class="row">
-						<div class="col-10 mlleft mlright content">
-							<?php the_content(); ?>
-						</div>
-					</div>
-
-				</div>
-			</section>
-		<?php } ?>
-
 	<?php endwhile; ?>
-
-	<?php //get_template_part( 'content-depoimentos' ); ?>
 
 	<?php
 
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		$args = array( 'post_type' => 'post', 'paged' => $paged );
+		if($paged == 1){ $posts_per_page = 19; }else{ $posts_per_page = 21; }
+		$args = array( 'post_type' => 'post', 'orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => $posts_per_page, 'paged' => $paged );
 
-	    /*$getPosts = array(
-	        'posts_per_page' => 2,
-	        'paged' => $paged,
-	        'post_type'   => 'post',
-	        'post_status' => 'any'
-	    );*/
+					if($paged != 1){ ?>
+						<section class="box-content blog no-padding">
+							<div class="container">
+
+								<div class="row">
+									
+									<ul class="blog-list list-categoria">
+					<?php }
 
 	    $wp_query = new WP_Query($args);
 
@@ -44,11 +31,11 @@
 			while ( have_posts() ) : the_post();
 				$count_post = $count_post+1;
 
-				if($count_post == 1){
+				if(($count_post == 1) and ($paged == 1)){
 					get_template_part( 'content-blog-destaque' );
 				}else{ ?>
 
-					<?php if($count_post == 2){ ?>
+					<?php if(($paged == 1) and $count_post == 2){ ?>
 						<section class="box-content blog no-padding-bottom">
 							<div class="container">
 
@@ -75,37 +62,6 @@
 			paginacao();
 
 		}
-	?>	
-
-<?php /*
-
-<section class="box-content sombra">
-
-	<div class="container">
-		<div class="row">
-
-			<?php 
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$args = array( 'post_type' => 'post', 'posts_per_page' => 1, 'paged' => $paged );
-			$wp_query = new WP_Query($args);
-
-			while ( have_posts() ) : the_post();
-
-				get_template_part( 'content-list-blog', get_post_format() );
-
-			endwhile; ?>
-
-		</div>
-	</div>
-
-</section>
-
-<?php  ?>
-*/ ?>
-
-
-
-
-
+	?>
 
 <?php get_footer(); ?>

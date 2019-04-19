@@ -222,7 +222,6 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 
-
 function paginacao() {
     global $wp_query;
     $big = 999999999; // need an unlikely integer

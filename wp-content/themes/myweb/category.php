@@ -1,36 +1,46 @@
 <?php get_header(); ?>
 
-<section class="box-content box-mini-resumo-page">
-	<div class="container">
+						<section class="box-content blog no-padding">
+							<div class="container">
 
-		<div class="row">
-		
-			<div class="col-12 texto">
+								<div class="row">
+									
+									<ul class="blog-list list-categoria">
 
-				<div class="middle">
+										<?php 
+											while ( have_posts() ) : the_post();
 
-					<div class="col-5">
-						<h5 class="col-12">blog</h5>
-						<h2 class="col-12"><?php the_field('titulo_blog','option') ?></h2>
-					</div>
+												get_template_part( 'content-blog' );
+												//get_template_part( 'content-header' );
 
-					<div class="col-7">
-						<div class="resumo-footer">
-							<p class=""><?php the_field('texto_blog','option') ?></p>
-							<p class=""><a class="button mini" href="<?php echo get_category_link(get_cat_ID('blog')); ?>" title="VER MAIS">ver mais</a></p>
-						</div>
-					</div>
+											endwhile;
 
-				</div>
+											//paginacao();
+										?>
 
-			</div>
+									</ul>
 
-		</div>
+								</div>
 
-	</div>
-</section>
+							</div>
+						</section>
 
-	<?php
+	<?php /*
+
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		if($paged == 1){ $posts_per_page = 19; }else{ $posts_per_page = 21; }
+		$args = array( 'post_type' => 'post', 'orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => $posts_per_page, 'paged' => $paged );
+
+					if($paged != 1){ ?>
+						<section class="box-content blog no-padding">
+							<div class="container">
+
+								<div class="row">
+									
+									<ul class="blog-list list-categoria">
+					<?php }
+
+	    $wp_query = new WP_Query($args);
 
         if(count($wp_query->posts) > 0){
 
@@ -40,17 +50,17 @@
 			while ( have_posts() ) : the_post();
 				$count_post = $count_post+1;
 
-				if($count_post == 1){
+				if(($count_post == 1) and ($paged == 1)){
 					get_template_part( 'content-blog-destaque' );
 				}else{ ?>
 
-					<?php if($count_post == 2){ ?>
-						<section class="box-content blog">
+					<?php if(($paged == 1) and $count_post == 2){ ?>
+						<section class="box-content blog no-padding-bottom">
 							<div class="container">
 
 								<div class="row">
 									
-									<ul class="blog-list">
+									<ul class="blog-list list-categoria">
 					<?php } ?>
 
 										<?php get_template_part( 'content-blog' ); ?>
@@ -70,8 +80,7 @@
 
 			paginacao();
 
-		}
-	?>	
-
+		} */
+	?>
 
 <?php get_footer(); ?>

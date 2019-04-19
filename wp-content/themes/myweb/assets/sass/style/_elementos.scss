@@ -68,9 +68,12 @@ h5 {
 	}
 
 	a {
+		//opacity: .5;
 		@include animacao;
 
 		&:hover {
+			//opacity: 1;
+			//color: $cor1;
 			color: darken($cor1, 10%);
 		}
 	}
@@ -104,15 +107,36 @@ p, .p-texto {
 	}
 }
 
+blockquote {
+	padding: 30px!important;
+	max-width: 80%;
+	p {
+		font-size: 2rem !important;
+		line-height: 2.5rem !important;
+
+		* {
+			color: #000;
+		}
+	}
+
+	&:last-child {
+		margin-bottom: 0px;
+	}
+}
+
 .content {
 	p {
 		text-align: justify;
 	}
 
-	.img-large {
+	.wp-block-image, img, iframe {
 		width: 100%;
 		display: block;
-		margin-top: 80px;
+		margin: 30px 0px;
+	}
+
+	iframe {
+		height: 50vh;
 	}
 }
 

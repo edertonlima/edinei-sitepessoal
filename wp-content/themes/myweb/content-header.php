@@ -11,9 +11,32 @@
 					<div class="<?php if(is_page('blog')){ echo 'col-5'; }else{ if(get_field('descricao')){ echo 'col-7'; }else{ echo 'col-12'; }} ?>">
 						<h5 class="col-12">
 							<a href="<?php echo get_permalink(get_page_by_path('home')); ?>" title="HOME">home</a>
-							<i class="fas fa-chevron-right"></i>
 
 							<?php
+								if(is_page('blog')){ ?>
+									<i class="fas fa-chevron-right"></i>
+									blog
+								<?php }
+							?>
+
+							<?php
+								if(is_single()){ ?>
+									<i class="fas fa-chevron-right"></i>
+									<a href="<?php echo get_home_url(); ?>/blog" title="BLOG">blog</a>
+									<?php
+										global $post;
+										$categories = get_the_category($post->ID);
+									?>
+									<i class="fas fa-chevron-right"></i>
+									<a href="<?php echo get_term_link($categories[0]->term_id); ?>" title="<?php echo $categories[0]->name; ?>"><?php echo $categories[0]->name; ?></a>
+
+									<?php
+										//$term = get_queried_object();
+										//var_dump($term);
+										//echo $term->cat_name;
+										//echo 'Blog';
+								}
+
 								if(is_post_type_archive('post')){
 									//$term = get_queried_object();
 									//var_dump($term);
@@ -28,7 +51,13 @@
 							 } ?>
 							
 						</h5>
-						<h2 class="col-12"><?php the_field('titulo'); ?></h2>
+						<h2 class="col-12">
+							<?php if(is_single()){
+								the_title();
+							}else{
+								the_field('titulo');
+							} ?>
+						</h2>
 					</div>
 
 					<?php if(get_field('descricao')){ ?>
